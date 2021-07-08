@@ -18,11 +18,11 @@ boolean input_string_complete = false;
 boolean sensor_string_complete = false;
 
 //Set the time to take a single measurement
-int yr = 2020;
-int mon = 12;
-int dy = 30;
-int hr = 18;
-int mi = 49;
+int yr = 2021;
+int mon = 04;
+int dy = 18;
+int hr = 9;
+int mi = 31;
 
 void setup()  {
   Serial.begin(9600);
@@ -45,11 +45,13 @@ void loop() {
   Serial.println("Starting loop ... ");
                   
     DateTime now = rtc.now();
-    if((now.year()==yr)) {
+    //if((now.year()==yr)) {
+    if(1==1) {
       Serial.print('Taking measurement...');
       take_sal_and_temp();
     }
     delay(1500);
+    Serial.println("");
     Serial.println(now.year());
 }
 
@@ -75,11 +77,14 @@ void take_sal_and_temp(void) {
 
   if (sensor_string_complete == true) {               //if a string from the Atlas Scientific product has been received in its entirety
     if (isdigit(sensorstring[0]) == false) {          //if the first character in the string is a digit
+      
       Serial.println(sensorstring);                   //send that string to the PC's serial monitor
+      print_EC_data();   
+      Serial.println("sensorstring");
     }
     else                                              //if the first character in the string is NOT a digit
     {
-      print_EC_data();                                //then call this function 
+                                   //then call this function 
     }
     sensorstring = "";                                //clear the string
     sensor_string_complete = false;                   //reset the flag used to tell if we have received a completed string from the Atlas Scientific product

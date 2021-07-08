@@ -27,7 +27,7 @@ static const uint8_t ledPin = 13;
 
 void setup()
 {
-    pingSerial.begin(115200); //baud needs to match here and next line, as well as in console
+    pingSerial.begin(115200); //baud needs to match here and next line, as well as in console.  Ping.
     Serial.begin(115200);
     pinMode(ledPin, OUTPUT);
     Serial.println("Blue Robotics ping1d-simple.ino");
